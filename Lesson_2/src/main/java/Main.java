@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /*
     Zaimplementuj metodę Java - tokenGenerator().
@@ -22,11 +19,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter the length of the token? Choose length: 5, 10 or 15");
-
-        int tokenLength = scanner.nextInt();
-        getLengthToken(tokenLength);
-
         /*
         ASCII codes:
         [a-z] 97-122
@@ -39,6 +31,11 @@ public class Main {
         putRangeOfValuesToList(97, 122); // add [a-z]
         putRangeOfValuesToList(65, 90); // add [A-Z]
         putRangeOfValuesToList(48, 57); // add [0-9]
+
+        System.out.println("Enter the length of the token? Choose length: 5, 10 or 15");
+
+        int tokenLength = scanner.nextInt();
+        getLengthToken(tokenLength);
     }
 
     public static void putRangeOfValuesToList(int start, int end) {
@@ -60,8 +57,16 @@ public class Main {
     }
 
     public static void tokenGenerator(int tokenLength) {
+        List<Object> token = new ArrayList<>();
+
         for (int i = 0; i < tokenLength; i++){
-            System.out.println("to do");
+            token.add(getRandomNumber(asciiChars));
         }
+        System.out.println("token" + token);
+    }
+
+    public static Integer getRandomNumber(List<Integer> list) {
+        Random rnd = new Random();
+        return list.get(rnd.nextInt(list.size()));
     }
 }
